@@ -1,0 +1,8 @@
+
+export const ADD_CITY_TO_THE_LIST = 'ADD_CITY_TO_THE_LIST';
+
+export const GET_INPUT_VALUE = 'GET_INPUT_VALUE';
+
+export const DELETE_DATA = 'DELETE_DATA';
+
+export const SET_CITY_WEATHER = 'SET_CITY_WEATHER';
