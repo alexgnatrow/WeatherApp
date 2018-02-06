@@ -1,3 +1,8 @@
+Weather Application
+Enter the name of the city and add it to the list.
+Click on the added city name to get data.
+Have a nice day!
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
