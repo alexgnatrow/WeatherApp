@@ -2,48 +2,45 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CityList from './CityList';
-import WeatherDay from '../components/WeatherDay';
-import { Wrapper,Header,Ul,Input, Button } from '../components/styles';
-import { fetchCityWeather } from '../actions/actions';
+import CityWeather from '../components/CityWeather';
+import { Wrapper,Header,Ul,Input, Button } from '../styles';
+import { fetchCityWeather, addCityToTheList, setInputValue, deleteCity, clear } from '../actions/actions';
 
 class WeatherApp extends React.Component {
 
-// Helper functions
-    handleChange(e){
-        this.setState({inputValue:e.target.value,});
-        console.log(this.state);
-    }
-    addCity(){
+    //handle change of input by storing the value
+    handleChange = (e) => {
+        this.props.setInputValue(e.target.value);
+    };
+
+    addCity = () =>{
+        try {
+            this.props.fetchCityWeather(this.props.inputValue);
+        } catch (e){
+            console.log('ADD_CITY_ERROR: ', e.message,
+                '| value: ', this.props.inputValue);
+        }
+    };
 
 
-        //motivation. Don`t forget to delete!!!
-        const workEl = document.getElementById('state');
-        if(!this.props.willItWork)  workEl.innerHTML = 'Put your shit together!';
 
-        if(this.state.inputValue){
-        fetchCityWeather(this.state.inputValue);
-        console.log(this.state.inputValue);} else {console.log('No null here, kid. Get out of here.');}
-
-    }
-    clear(){
-        this.setState({cities:[], inputValue: ''});
-    }
 render(){
     return(
         <Wrapper>
-            <Header>
-                Weather App is running
-            </Header>
+            <Header>Weather App is running</Header>
             <Ul>
-            <WeatherDay name={'firstCity'}> </WeatherDay>
-            <WeatherDay name={'secondCity'}> </WeatherDay>
-            <WeatherDay name={'thirdCity'}> </WeatherDay>
+            <CityWeather name={'CityWeather'} data={this.props.data} />
             </Ul>
-            <Input onChange={this.handleChange.bind(this)}/>
-            <Button onClick={this.addCity.bind(this)}>Add</Button>
-            <Button onClick={this.clear.bind(this)}>Clear</Button><br></br>
-            <CityList>            </CityList>
-            <h1 id={'state'}>Ok lets go</h1>
+            <Input onChange={this.handleChange}/>
+
+            <Button id="addButton"
+                    onClick={this.addCity} >Add</Button>
+
+            <Button onClick={this.props.clear}>Clear</Button>
+
+            <CityList cities={this.props.cities}
+                      fetchCityWeather={this.props.fetchCityWeather}
+                      deleteCity={this.props.deleteCity} />
         </Wrapper>
         );
     }
@@ -58,7 +55,9 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {})(WeatherApp);
+
+export default connect(mapStateToProps, {fetchCityWeather,
+    addCityToTheList, deleteCity, setInputValue, clear })(WeatherApp);
 
 
 

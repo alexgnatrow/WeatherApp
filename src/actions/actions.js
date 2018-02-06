@@ -1,27 +1,55 @@
 import axios from 'axios';
 
-import{ADD_CITY_TO_THE_LIST, DELETE_DATA} from '../types';
+import{
+    ADD_CITY_TO_THE_LIST,
+    CHANGE_INPUT,
+    DELETE_DATA,
+    FETCH_CITY,
+    FETCH_CITY_ERROR,
+    FETCH_CITY_SUCCESS,
+    DELETE_CITY} from '../types';
 
 
 export function fetchCityWeather(name){
     return dispatch => {
-        return axios.get(`api.openweathermap.org/data/2.5/weather?q=${name}&APPID=51cc7cd2f419b75295d500ac3977501a`)
+        console.log(name);
+        dispatch({type: FETCH_CITY,});
+        return axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${name}&APPID=51cc7cd2f419b75295d500ac3977501a`)
             .then(res => {
-                console.log(res.data.name);
-                dispatch(addCityToTheList(res.data.results))
+                dispatch(fetchCitySuccess(res.data));
+                dispatch(addCityToTheList(res.data));
             })
-            .catch(err => {console.log("No no no no");});
+            .catch(err => dispatch({type: FETCH_CITY_ERROR, payload: err.message,}));
     };
 }
 
-export function addCityToTheList(data){
+export function fetchCitySuccess(data){
     return{
+        type: FETCH_CITY_SUCCESS,
+        payload: data,
+    }
+}
+
+export function addCityToTheList(data){
+    return {
         type: ADD_CITY_TO_THE_LIST,
         payload: data,
     };
 }
-
+export function deleteCity(name){
+    return{
+        type: DELETE_CITY,
+        payload: name,
+    };
+}
+export function setInputValue(value){
+    return {
+        type: CHANGE_INPUT,
+        payload: value,
+    };
+}
 export function clear(){
+    console.log('clear() is executed mthfckr');//TO_DELETE
     return {
         type: DELETE_DATA,
     };
