@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import CityList from './CityList';
 import CityWeather from '../components/CityWeather';
 import { Wrapper,Header,Ul,Input, Button } from '../styles';
-import { fetchCityWeather, addCityToTheList, setInputValue, deleteCity, clear } from '../actions/actions';
+import {
+    fetchCityWeather, setInputValue,
+    deleteCity, getCity, clear } from '../actions/actions';
 
 class WeatherApp extends React.Component {
 
@@ -36,18 +38,22 @@ render(){
         <Wrapper>
             <Header>Weather App is running</Header>
             <Ul>
-            <CityWeather name={'CityWeather'} data={this.props.data} />
+            <CityWeather name={'CityWeather'}
+                         current={this.props.current} />
             </Ul>
-            <Input id="myInput" onChange={this.handleChange}/>
+            <Input id="myInput"
+                   onChange={this.handleChange}
+                   value={this.props.inputValue}/>
 
             <Button id="addButton"
-                    onClick={this.addCity} >Add</Button>
+                    onClick={this.addCity}>Add</Button>
 
             <Button onClick={this.props.clear}>Clear</Button>
 
-            <CityList cities={this.props.cities}
+            <CityList data={this.props.data}
                       fetchCityWeather={this.props.fetchCityWeather}
-                      deleteCity={this.props.deleteCity} />
+                      deleteCity={this.props.deleteCity}
+                      getCity={this.props.getCity}  />
         </Wrapper>
         );
     }
@@ -56,15 +62,15 @@ render(){
 
 function mapStateToProps(state) {
     return {
-        cities: state.cities,
+        data: state.data,
+        current: state.current,
         inputValue: state.inputValue,
-        willItWork: state.willItWork
     };
 }
 
 
 export default connect(mapStateToProps, {fetchCityWeather,
-    addCityToTheList, deleteCity, setInputValue, clear })(WeatherApp);
+     deleteCity, getCity, setInputValue, clear })(WeatherApp);
 
 
 

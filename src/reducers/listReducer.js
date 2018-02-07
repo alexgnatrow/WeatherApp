@@ -1,15 +1,15 @@
 import {
-    ADD_CITY_TO_THE_LIST,
     CHANGE_INPUT,
     DELETE_DATA,
     FETCH_CITY_SUCCESS,
     FETCH_CITY_ERROR,
     FETCH_CITY,
-    DELETE_CITY} from '../types';
+    DELETE_CITY,
+    GET_CITY} from '../types';
 
 export const initState = {
     data:[],
-    cities: [],
+    current: {},
     inputValue: '',
     fetching: false,
     fetched: false,
@@ -35,11 +35,6 @@ export default  (state = initState, action) => {
                 data: state.data.concat(action.payload),
                 fetching: false,
             };
-        case ADD_CITY_TO_THE_LIST:
-            return{
-                ...state,
-                cities: [...state.cities, action.payload.name],
-            };
         case CHANGE_INPUT:
             return{
                 ...state,
@@ -48,14 +43,20 @@ export default  (state = initState, action) => {
         case DELETE_CITY:
             return{
                 ...state,
-                 cities: state.cities.filter((name) => name !== action.payload),
                 data: state.data.filter((data) => data.name !== action.payload),
+            };
+        case GET_CITY:
+            return{
+                ...state,
+                current: state.data.find((city)=>{
+                    return city.name === action.payload;
+                })
             };
         case DELETE_DATA:
             return{
                 ...state,
-                cities:[],
                 data:[],
+                current: {},
                 inputValue: '',
             };
         default: return state;

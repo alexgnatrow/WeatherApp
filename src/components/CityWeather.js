@@ -7,29 +7,30 @@ import {Day, Li} from '../styles';
 export default class CityWeather extends React.Component{
 
     render(){
-        const city = this.props.data;
+        const city = this.props.current;
         const temperature = ()=> {
+            console.log(city.main.temp);
             if(city.main.temp){
-                return city.main.temp - 273;
+                return city.main.temp-273;
             } else return 'No temp yet';
         };
-        const name = ()=> {
+        const cityName = ()=> {
+            console.log(city.name);
             if(city.name){
                 return city.name;
             } else return 'Noname';
         };
         const wind = ()=> {
+            console.log(city.wind);
             if(city.wind){
                 return city.wind;
             } else return 'No wind data yet';
         };
         return(
 
-
             <Li>
-                <Day>This day</Day>
+                <Day>{cityName}this name{city.name}</Day>
                 {temperature} <br/>
-                {name}<br/>
                 {wind}
                 this data
             </Li>

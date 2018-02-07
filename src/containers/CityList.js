@@ -5,26 +5,23 @@ import { Ulist, ListItem, Button2, ListItemWrapper } from '../styles';
 export default class CityList extends React.Component{
 
     render(){
-        const citiesArr = this.props.cities;
-        //     this.props.data.map(function(city){
-        //     if(city !== undefined){
-        //         return city.name;
-        //     } else {
-        //         return console.log('fuck this');
-        //     }
-        // });
-        // const getCityWeather = (name) => this.props.data.find({name:name});
-
-        const fetchCityWeather = this.props.fetchCityWeather;
+        const citiesArr = this.props.data.map((city)=> {
+            if(city !== undefined){
+                return city.name;
+            } else {
+                return console.log('fuck this');
+            }
+        });
+        const getCity = this.props.getCity;
         const deleteCity = this.props.deleteCity;
         return(
         <Ulist>
 
-            {citiesArr.map(function(city, index){
+            {citiesArr.map((city, index)=>{
                 return (
                     <ListItemWrapper key={index}>
-                        <ListItem  onClick={()=> fetchCityWeather(city)}>
-                                    {city}
+                        <ListItem  onClick={()=> getCity(city)}>
+                                    {city.toString()}
                         </ListItem>
                         <Button2 onClick={()=> deleteCity(city)}>X</Button2>
                     </ListItemWrapper>
