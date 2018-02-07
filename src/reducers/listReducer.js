@@ -48,8 +48,8 @@ export default  (state = initState, action) => {
         case DELETE_CITY:
             return{
                 ...state,
-                 // cities: state.cities.filter(() => this === action.payload),
-                data: state.data.filter(() => this.name !== action.payload),
+                 cities: state.cities.filter((name) => name !== action.payload),
+                data: state.data.filter((data) => data.name !== action.payload),
             };
         case DELETE_DATA:
             return{

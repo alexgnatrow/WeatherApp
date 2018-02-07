@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { apiKey } from './apiKey';
 import{
     ADD_CITY_TO_THE_LIST,
     CHANGE_INPUT,
@@ -9,12 +9,11 @@ import{
     FETCH_CITY_SUCCESS,
     DELETE_CITY} from '../types';
 
-
 export function fetchCityWeather(name){
     return dispatch => {
         console.log(name);
         dispatch({type: FETCH_CITY,});
-        return axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${name}&APPID=51cc7cd2f419b75295d500ac3977501a`)
+        return axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${name}&APPID=${apiKey}`)
             .then(res => {
                 dispatch(fetchCitySuccess(res.data));
                 dispatch(addCityToTheList(res.data));
@@ -27,9 +26,8 @@ export function fetchCitySuccess(data){
     return{
         type: FETCH_CITY_SUCCESS,
         payload: data,
-    }
+    };
 }
-
 export function addCityToTheList(data){
     return {
         type: ADD_CITY_TO_THE_LIST,

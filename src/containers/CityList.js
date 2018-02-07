@@ -13,6 +13,8 @@ export default class CityList extends React.Component{
         //         return console.log('fuck this');
         //     }
         // });
+        // const getCityWeather = (name) => this.props.data.find({name:name});
+
         const fetchCityWeather = this.props.fetchCityWeather;
         const deleteCity = this.props.deleteCity;
         return(

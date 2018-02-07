@@ -25,13 +25,20 @@ class WeatherApp extends React.Component {
 
 
 render(){
+    // const input = document.getElementById('myInput');
+    // input.addEventListener('keyup', function(e){
+    //     e.preventDefault();
+    //     if(e.keyCode === 13){
+    //         document.getElementById('addButton').click();
+    //     }
+    // });
     return(
         <Wrapper>
             <Header>Weather App is running</Header>
             <Ul>
             <CityWeather name={'CityWeather'} data={this.props.data} />
             </Ul>
-            <Input onChange={this.handleChange}/>
+            <Input id="myInput" onChange={this.handleChange}/>
 
             <Button id="addButton"
                     onClick={this.addCity} >Add</Button>
