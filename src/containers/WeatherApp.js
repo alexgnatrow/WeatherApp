@@ -14,7 +14,11 @@ class WeatherApp extends React.Component {
     handleChange = (e) => {
         this.props.setInputValue(e.target.value);
     };
-
+    handleKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            this.addCity();
+        }
+    };
     addCity = () =>{
         try {
             this.props.fetchCityWeather(this.props.inputValue);
@@ -27,13 +31,6 @@ class WeatherApp extends React.Component {
 
 
 render(){
-    // const input = document.getElementById('myInput');
-    // input.addEventListener('keyup', function(e){
-    //     e.preventDefault();
-    //     if(e.keyCode === 13){
-    //         document.getElementById('addButton').click();
-    //     }
-    // });
     return(
         <Wrapper>
             <Header>Weather App is running</Header>
@@ -43,6 +40,7 @@ render(){
             </Ul>
             <Input id="myInput"
                    onChange={this.handleChange}
+                   onKeyPress={this.handleKeyPress}
                    value={this.props.inputValue}/>
 
             <Button id="addButton"

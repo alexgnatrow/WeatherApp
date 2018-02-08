@@ -23,7 +23,8 @@ export const Ul = styled.ul`
 export const Li = styled.div`
     border: 4px solid #0ff;
     border-radius: 10px;
-    margin-right: 2.3em;    
+    margin-right: 2.3em;  
+    font-size:20px;  
     `;
 export const Day = styled.li`
     font-size: 26px;
@@ -34,7 +35,7 @@ export const Day = styled.li`
 export const Input = styled.input`
     border: 0px solid rgba(10,200,250,1);
     border-radius: 10px;
-    width: 25%;
+    width: 15%;
     font-size: 18px;
     margin: 10px;
     
@@ -72,7 +73,7 @@ export const Ulist = styled.ul`
     margin: 0 auto;
     padding: 0;
     `;
-export const ListItem = styled.li`
+export const ListItem = styled.button`
     
     border: 4px solid #0ff;
     border-radius: 7px;
@@ -109,7 +110,7 @@ export const Button2 = styled.button`
 
     }
     `;
-export const ListItemWrapper = styled.div`
+export const ListItemWrapper = styled.li`
     display: flex;
     padding: 0;
     margin: 0;
