@@ -3,16 +3,18 @@ import { connect } from 'react-redux';
 
 import CityList from './CityList';
 import CityWeather from '../components/CityWeather';
-import { Wrapper,Header,Ul,Input, Button } from '../styles';
+import { Wrapper,Header,Section,Input, Button } from '../styles';
 import {
     fetchCityWeather, setInputValue,
     deleteCity, getCity, clear } from '../actions/actions';
 
 class WeatherApp extends React.Component {
 
+
     //handle change of input by storing the value
     handleChange = (e) => {
-        this.props.setInputValue(e.target.value);
+        const string = e.target.value.replace(/&#(\S*);/g, '');
+        this.props.setInputValue(string);
     };
     handleKeyPress = (e) => {
         if(e.key === 'Enter'){
@@ -23,8 +25,7 @@ class WeatherApp extends React.Component {
         try {
             this.props.fetchCityWeather(this.props.inputValue);
         } catch (e){
-            console.log('ADD_CITY_ERROR: ', e.message,
-                '| value: ', this.props.inputValue);
+            console.log('ADD_CITY_ERROR: ', e.message);
         }
     };
 
@@ -34,10 +35,10 @@ render(){
     return(
         <Wrapper>
             <Header>Weather App is running</Header>
-            <Ul>
+            <Section>
             <CityWeather name={'CityWeather'}
                          current={this.props.current} />
-            </Ul>
+            </Section>
             <Input id="myInput"
                    onChange={this.handleChange}
                    onKeyPress={this.handleKeyPress}

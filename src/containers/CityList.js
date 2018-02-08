@@ -21,7 +21,7 @@ export default class CityList extends React.Component{
                 return (
                     <ListItemWrapper id="div" key={index}>
                         <ListItem  onClick={()=> getCity(city)}>
-                            {city.toString()}
+                            {city}
                         </ListItem>
                         <Button2 onClick={()=> deleteCity(city)}>X</Button2>
                     </ListItemWrapper>

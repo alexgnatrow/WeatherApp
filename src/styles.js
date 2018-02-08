@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.main`
     color: rebeccapurple;
+    font-family: sans-serif;
     background-color: rgba(10,200,250,1);
     text-align: center;
     height: 826px;
@@ -13,23 +14,24 @@ export const Header = styled.h1`
         padding-right: 2.2em;
         margin: 0;
     `;
-export const Ul = styled.ul`
-    list-style-type:none;
+export const Section = styled.section`
     display: flex;
     justify-content: center;
     align-content: center;
     padding: 1%;
     `;
-export const Li = styled.div`
+export const Ul = styled.ul`
+    list-style-type:none;
     border: 4px solid #0ff;
     border-radius: 10px;
-    margin-right: 2.3em;  
-    font-size:20px;  
+    font-size:20px; 
+    padding:0; 
+    width: 15rem;
     `;
-export const Day = styled.li`
+export const Li = styled.li`
     font-size: 26px;
     background-color: #0ff;
-    padding: 70px;
+    padding: 3rem;
     margin: 0;
     `;
 export const Input = styled.input`
@@ -115,4 +117,10 @@ export const ListItemWrapper = styled.li`
     padding: 0;
     margin: 0;
     justify-content: center;    
+    `;
+export const Img = styled.img`
+    padding: 0;
+    margin: 0;
+    width: 5rem;
+    height: 5rem;
     `;

@@ -1,23 +1,31 @@
 import React from 'react';
-import {Day, Li} from '../styles';
+import {Ul, Li, Img} from '../styles';
 
 //One day weather block with
 //@temperature - average temperature.
 //@wind - the wind speed.
 export default class CityWeather extends React.Component{
 
+
     render(){
         const city = this.props.current;
-        const temperature = city.main? city.main : 'no temperature yet';
-        const cityName =  city.name ? city.name : 'no name yet';
-        const wind =  city.wind ? city.wind : 'no wind yet';
+        const cityName =  city.name ? city.name : 'no name';
+        const temperature = city.main.temp ?
+            Math.round(city.main.temp-273) : 'no temperature';
+        const wind =  city.wind.speed ? city.wind.speed : 'no wind';
+        const icon = city.weather[0].icon;
+        const description = city.weather[0].description;
+
         return(
 
-            <Li>
-                <Day>{cityName}</Day>
-                Temperature: {temperature.toString()} <br/>
-                Wind speed: {wind.toString()} <br />
-            </Li>
+            <Ul>
+                <Li>{cityName} <br/>
+                <Img src={`http://openweathermap.org/img/w/${icon}.png`} alt="icon"/> <br/>
+                    {description}
+                </Li>
+                Temperature: {temperature} C <br/>
+                Wind speed: {wind} m/s
+            </Ul>
 
         );
     }

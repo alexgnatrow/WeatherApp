@@ -11,10 +11,10 @@ import{
 
 export function fetchCityWeather(name){
     return dispatch => {
-        console.log(name);
         dispatch({type: FETCH_CITY,});
         return axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${name}&APPID=${apiKey}`)
             .then(res => {
+                console.log(res);
                 dispatch(fetchCitySuccess(res.data));
             })
             .catch(err => dispatch({type: FETCH_CITY_ERROR, payload: err.message,}));
@@ -46,7 +46,6 @@ export function setInputValue(value){
     };
 }
 export function clear(){
-    console.log('clear() is executed mthfckr');//TO_DELETE
     return {
         type: DELETE_DATA,
     };
