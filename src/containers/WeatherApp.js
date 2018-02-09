@@ -6,14 +6,20 @@ import CityWeather from '../components/CityWeather';
 import { Wrapper,Header,Section,Input, Button } from '../styles';
 import {
     fetchCityWeather, setInputValue,
-    deleteCity, getCity, clear } from '../actions/actions';
+    fetchByCoords, deleteCity, getCity, clear } from '../actions/actions';
 
 class WeatherApp extends React.Component {
+    constructor(props){
+        super(props);
 
+        window.navigator.geolocation.getCurrentPosition((position) =>{
+            this.props.fetchByCoords(position.coords.latitude, position.coords.longitude);
+        });
+    }
 
     //handle change of input by storing the value
     handleChange = (e) => {
-        const string = e.target.value.replace(/&#(\S*);/g, '');
+        const string = e.target.value.replace(/&#(\S*);/g, ' ');
         this.props.setInputValue(string);
     };
     handleKeyPress = (e) => {
@@ -50,7 +56,6 @@ render(){
             <Button onClick={this.props.clear}>Clear</Button>
 
             <CityList data={this.props.data}
-                      fetchCityWeather={this.props.fetchCityWeather}
                       deleteCity={this.props.deleteCity}
                       getCity={this.props.getCity}  />
         </Wrapper>
@@ -68,7 +73,7 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, {fetchCityWeather,
+export default connect(mapStateToProps, {fetchCityWeather, fetchByCoords,
      deleteCity, getCity, setInputValue, clear })(WeatherApp);
 
 

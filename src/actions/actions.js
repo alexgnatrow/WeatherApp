@@ -14,13 +14,21 @@ export function fetchCityWeather(name){
         dispatch({type: FETCH_CITY,});
         return axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${name}&APPID=${apiKey}`)
             .then(res => {
-                console.log(res);
                 dispatch(fetchCitySuccess(res.data));
             })
             .catch(err => dispatch({type: FETCH_CITY_ERROR, payload: err.message,}));
     };
 }
-
+export function fetchByCoords(lat, long){
+    return dispatch => {
+        dispatch({type: FETCH_CITY,});
+        return axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${apiKey}`)
+            .then(res => {
+                dispatch(fetchCitySuccess(res.data));
+            })
+            .catch(err => dispatch({type: FETCH_CITY_ERROR, payload: err.message,}));
+    };
+}
 export function fetchCitySuccess(data){
     return{
         type: FETCH_CITY_SUCCESS,

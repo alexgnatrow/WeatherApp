@@ -5,6 +5,8 @@ export const DELETE_CITY = 'DELETE_CITY';
 
 export const GET_CITY = 'GET_CITY';
 
+export const SET_INITIAL_VALUE = 'SET_INITIAL_VALUE';
+
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 
 export const FETCH_CITY = 'FETCH_CITY';

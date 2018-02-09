@@ -10,7 +10,7 @@ export const Wrapper = styled.main`
     `;
 export const Header = styled.h1`
         font-size: 30px;
-        padding: 1em;
+        padding: 2em;
         padding-right: 2.2em;
         margin: 0;
     `;
@@ -19,6 +19,8 @@ export const Section = styled.section`
     justify-content: center;
     align-content: center;
     padding: 1%;
+    margin-top: 0;
+    padding-top: 0;
     `;
 export const Ul = styled.ul`
     list-style-type:none;
@@ -26,6 +28,7 @@ export const Ul = styled.ul`
     border-radius: 10px;
     font-size:20px; 
     padding:0; 
+    margin-top: 0;
     width: 15rem;
     `;
 export const Li = styled.li`
