@@ -10,8 +10,7 @@ export const Wrapper = styled.main`
     `;
 export const Header = styled.h1`
         font-size: 30px;
-        padding: 2em;
-        padding-right: 2.2em;
+        padding: 1em;
         margin: 0;
     `;
 export const Section = styled.section`
@@ -40,7 +39,7 @@ export const Li = styled.li`
 export const Input = styled.input`
     border: 0px solid rgba(10,200,250,1);
     border-radius: 10px;
-    width: 15%;
+    width: 30%;
     font-size: 18px;
     margin: 10px;
     
