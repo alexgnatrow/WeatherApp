@@ -10,7 +10,7 @@ export default class CityWeather extends React.Component{
     render(){
         
         const city = this.props.current;
-        const cityName =  city.name ? city.name : 'use only English characters and correct city names, please';
+        const cityName =  city.name ? city.name : this.props.input;
         const temperature = city.main ? Math.round(city.main.temp-273) : '';
         const wind =  city.wind ? city.wind.speed : '';
         const icon = city.weather ? city.weather[0].icon : '';

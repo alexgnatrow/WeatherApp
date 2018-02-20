@@ -43,7 +43,8 @@ render(){
             <Header>Weather App is running</Header>
             <Section>
             <CityWeather name={'CityWeather'}
-                         current={this.props.current} />
+                         current={this.props.current} 
+                         input={this.props.inputValue}/>
             </Section>
             <Input id="myInput"
                    onChange={this.handleChange}
