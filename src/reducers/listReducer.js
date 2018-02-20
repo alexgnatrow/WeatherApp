@@ -7,15 +7,10 @@ import {
     DELETE_CITY,
     GET_CITY} from '../types';
 
-const initCity = {
-    "weather":[{"id":741,"main":"Fog","description":"fog","icon":"50d"}],
-    "main":{"temp":275.15,"pressure":1011,"humidity":93,"temp_min":275.15,"temp_max":275.15},
-    "wind":{"speed":2,"deg":40},
-    "name":"Lviv"};
 
 export const initState = {
-    data:[initCity],
-    current: initCity,
+    data:[],
+    current: {},
     inputValue: '',
     fetching: false,
     fetched: false,
@@ -61,8 +56,8 @@ export default (state = initState, action) => {
         case DELETE_DATA:
             return{
                 ...state,
-                data:[initCity],
-                current: initCity,
+                data:[],
+                current: {},
                 inputValue: '',
                 fetched: false,
             };
