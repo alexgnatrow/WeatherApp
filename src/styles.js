@@ -29,7 +29,7 @@ export const Ul = styled.ul`
     font-size:20px; 
     padding:0; 
     margin-top: 0;
-    width: 15rem;
+    width: 16rem;
     `;
 export const Li = styled.li`
     font-size: 26px;
@@ -78,6 +78,12 @@ export const Ulist = styled.ul`
     margin: 0 auto;
     padding: 0;
     `;
+export const ListItemWrapper = styled.li`
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: center;    
+    `;
 export const ListItem = styled.button`
     
     border: 4px solid #0ff;
@@ -114,12 +120,6 @@ export const Button2 = styled.button`
     box-shadow: 0 0 10px;
 
     }
-    `;
-export const ListItemWrapper = styled.li`
-    display: flex;
-    padding: 0;
-    margin: 0;
-    justify-content: center;    
     `;
 export const Img = styled.img`
     padding: 0;
