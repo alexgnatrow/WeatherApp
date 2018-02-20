@@ -39,7 +39,7 @@ export const Li = styled.li`
 export const Input = styled.input`
     border: 0px solid rgba(10,200,250,1);
     border-radius: 10px;
-    width: 30%;
+    width: 40%;
     font-size: 18px;
     margin: 10px;
     
@@ -72,7 +72,7 @@ export const Button = styled.button`
 export const Ulist = styled.ul`
     list-style-type: none;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column-reverse wrap;
     width: 25rem;
     margin: 0 auto;
     padding: 0;
