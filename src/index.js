@@ -15,9 +15,6 @@ const store = createStore(
         window.devToolsExtension ? window.devToolsExtension() : f => f
     ));
 
-store.subscribe(()=>{console.log(store.getState())});
-
-
 const rootComp = document.getElementById('root');
 
 render(

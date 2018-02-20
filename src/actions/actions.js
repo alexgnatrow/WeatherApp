@@ -12,7 +12,7 @@ import{
 export function fetchCityWeather(name){
     return dispatch => {
         dispatch({type: FETCH_CITY,});
-        return axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${name}&APPID=${apiKey}`)
+        return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${name}&APPID=${apiKey}`)
             .then(res => {
                 dispatch(fetchCitySuccess(res.data));
             })
@@ -22,7 +22,7 @@ export function fetchCityWeather(name){
 export function fetchByCoords(lat, long){
     return dispatch => {
         dispatch({type: FETCH_CITY,});
-        return axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${apiKey}`)
+        return axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${apiKey}`)
             .then(res => {
                 dispatch(fetchCitySuccess(res.data));
             })
