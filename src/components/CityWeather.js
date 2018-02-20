@@ -8,17 +8,13 @@ export default class CityWeather extends React.Component{
 
 
     render(){
-        if(this.props.current === undefined){
-            return null;
-        } else {
-
+        
         const city = this.props.current;
-        const cityName =  city.name ? city.name : 'no name';
-        console.log(city.main.temp)
-        const temperature = city.main.temp ? Math.round(city.main.temp-273) : 'no temperature';
-        const wind =  city.wind.speed ? city.wind.speed : 'no wind';
-        const icon = city.weather[0].icon;
-        const description = city.weather[0].description;
+        const cityName =  city.name ? city.name : 'use only English characters and correct city names, please';
+        const temperature = city.main ? Math.round(city.main.temp-273) : '';
+        const wind =  city.wind ? city.wind.speed : '';
+        const icon = city.weather ? city.weather[0].icon : '';
+        const description = city.weather ? city.weather[0].description : '';
 
         return(
 
@@ -33,5 +29,4 @@ export default class CityWeather extends React.Component{
 
         );
     }
-}
 }
