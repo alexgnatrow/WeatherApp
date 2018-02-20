@@ -33,7 +33,8 @@ export const Ul = styled.ul`
 export const Li = styled.li`
     font-size: 26px;
     background-color: #0ff;
-    padding: 3rem;
+    padding: 0.5rem 3rem;
+    
     margin: 0;
     `;
 export const Input = styled.input`
