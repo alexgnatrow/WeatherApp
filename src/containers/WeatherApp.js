@@ -46,6 +46,7 @@ render(){
                          current={this.props.current} 
                          input={this.props.inputValue}/>
             </Section>
+            Add new cities to the list:
             <Input id="myInput"
                    onChange={this.handleChange}
                    onKeyPress={this.handleKeyPress}

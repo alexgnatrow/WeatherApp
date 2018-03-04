@@ -40,7 +40,7 @@ export const Li = styled.li`
 export const Input = styled.input`
     border: 0px solid rgba(10,200,250,1);
     border-radius: 10px;
-    width: 40%;
+    width: 30%;
     font-size: 18px;
     margin: 10px;
     
