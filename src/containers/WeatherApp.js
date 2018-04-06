@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 
 import CityList from './CityList';
 import CityWeather from '../components/CityWeather';
-import { Wrapper,Header,Section,Input, Button } from '../styles';
+import { Wrapper, Header, Section, Input, Button, Text } from '../styles';
 import {
     fetchCityWeather, setInputValue,
-    fetchByCoords, deleteCity, getCity, clear } from '../actions/actions';
+    fetchByCoords, deleteCity, getCity, clear
+} from '../actions/actions';
 
 class WeatherApp extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        window.navigator.geolocation.getCurrentPosition((position) =>{
+        window.navigator.geolocation.getCurrentPosition((position) => {
             this.props.fetchByCoords(position.coords.latitude, position.coords.longitude);
         });
     }
@@ -23,44 +24,44 @@ class WeatherApp extends React.Component {
         this.props.setInputValue(string);
     };
     handleKeyPress = (e) => {
-        if(e.key === 'Enter'){
+        if (e.key === 'Enter') {
             this.addCity();
         }
     };
-    addCity = () =>{
+    addCity = () => {
         try {
             this.props.fetchCityWeather(this.props.inputValue);
-        } catch (e){
+        } catch (e) {
             console.log('ADD_CITY_ERROR: ', e.message);
         }
     };
 
 
 
-render(){
-    return(
-        <Wrapper>
-            <Header>Weather App is running</Header>
-            <Section>
-            <CityWeather name={'CityWeather'}
-                         current={this.props.current} 
-                         input={this.props.inputValue}/>
-            </Section>
-            Add new cities to the list: <br />
-            <Input id="myInput"
-                   onChange={this.handleChange}
-                   onKeyPress={this.handleKeyPress}
-                   value={this.props.inputValue}/>
+    render() {
+        return (
+            <Wrapper>
+                <Header>Simplest Weather App</Header>
+                <Section>
+                    <CityWeather name={'CityWeather'}
+                        current={this.props.current}
+                        input={this.props.inputValue} />
+                </Section>
+                <Text>Add new cities to the list: </Text>
+                <Input id="myInput"
+                    onChange={this.handleChange}
+                    onKeyPress={this.handleKeyPress}
+                    value={this.props.inputValue} />
 
-            <Button id="addButton"
+                <Button id="addButton"
                     onClick={this.addCity}>Add</Button>
 
-            <Button onClick={this.props.clear}>Clear</Button>
+                <Button onClick={this.props.clear}>Clear</Button>
 
-            <CityList data={this.props.data}
-                      deleteCity={this.props.deleteCity}
-                      getCity={this.props.getCity}  />
-        </Wrapper>
+                <CityList data={this.props.data}
+                    deleteCity={this.props.deleteCity}
+                    getCity={this.props.getCity} />
+            </Wrapper>
         );
     }
 
@@ -75,8 +76,10 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, {fetchCityWeather, fetchByCoords,
-     deleteCity, getCity, setInputValue, clear })(WeatherApp);
+export default connect(mapStateToProps, {
+    fetchCityWeather, fetchByCoords,
+    deleteCity, getCity, setInputValue, clear
+})(WeatherApp);
 
 
 

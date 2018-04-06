@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.main`
-    color: rebeccapurple;
+    color: #2dde8e;
     font-family: sans-serif;
-    background-color: rgba(10,200,250,1);
+    background: linear-gradient(to bottom right, #401effdf, #0ac8fa);
     text-align: center;
-    height: 826px;
+    height: 100vh;
     margin:-8px;
+    &::-webkit-scrollbar{
+        width: 2px;
+    }
+    &::-moz-scrollbar{
+        width: 2px;
+    }
     `;
 export const Header = styled.h1`
         font-size: 30px;
@@ -22,6 +28,7 @@ export const Section = styled.section`
     padding-top: 0;
     `;
 export const Ul = styled.ul`
+    background: linear-gradient(to top left, #401effdf, #0ac8fa);
     list-style-type:none;
     border: 4px solid #0ff;
     border-radius: 10px;
@@ -32,15 +39,19 @@ export const Ul = styled.ul`
     `;
 export const Li = styled.li`
     font-size: 26px;
-    background-color: #0ff;
     padding: 0.5rem 3rem;
     
     margin: 0;
     `;
+export const Text = styled.p`
+    margin: 0;
+    font-weight: 600;
+
+`
 export const Input = styled.input`
     border: 0px solid rgba(10,200,250,1);
     border-radius: 10px;
-    width: 30%;
+    width: 30vw;
     font-size: 18px;
     margin: 10px;
     
@@ -88,7 +99,7 @@ export const ListItem = styled.button`
     
     border: 4px solid #0ff;
     border-radius: 7px;
-    background-color:#0ff;
+    background-color: #0ff;
     width: 15rem;
     margin: 0.5rem;
     cursor: pointer;
@@ -127,3 +138,5 @@ export const Img = styled.img`
     width: 5rem;
     height: 5rem;
     `;
+
+export default {};
