@@ -51,7 +51,7 @@ export const Text = styled.p`
 export const Input = styled.input`
     border: 0px solid rgba(10,200,250,1);
     border-radius: 10px;
-    width: 30vw;
+    width: 200px;
     font-size: 18px;
     margin: 10px;
     
