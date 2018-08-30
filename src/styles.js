@@ -31,6 +31,10 @@ export const Ul = styled.ul`
     background: linear-gradient(to top left, #401effdf, #0ac8fa);
     list-style-type:none;
     border: 4px solid #0ff;
+    border-top-color: #357ffe;
+    border-left-color: #3383fd;
+    border-bottom-color: #435cfe;
+    border-right-color: #4755fe;
     border-radius: 10px;
     font-size:20px; 
     padding:0; 
